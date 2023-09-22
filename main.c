@@ -3,7 +3,6 @@
 #define _GNU_SOURCE
 #include <stdlib.h>
 
-/*bus_t bus = {NULL, NULL, NULL, 0};*/
 
 /**
 * main - function for monty code interpreter
@@ -16,7 +15,6 @@ int main(int argc, char *argv[])
 {
 	char *content;
 	FILE *file;
-	size_t size = 0;
 	ssize_t read_line = 1;
 	stack_t *stack = NULL;
 	unsigned int counter = 0;
@@ -35,9 +33,7 @@ int main(int argc, char *argv[])
 	}
 	while (read_line > 0)
 	{
-		*bus_t bus = {NULL, NULL, NULL, 0};`
 		content = NULL;
-		read_line = getline(&content, &size, file);
 		bus.content = content;
 		counter++;
 		if (read_line > 0)
