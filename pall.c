@@ -1,18 +1,55 @@
+#include "monty.h"
+
 /**
- * pall - Prints all elements of the stack
- * @stack: Pointer to the head of the stack
- * @line_number: Line number in the file
- */
-void pall(stack_t **stack, unsigned int line_number)
+* f_pall - function that prints everything in the stack
+* @head: double head pointer to the stack
+* @counter: unused line count
+*
+* Return: nothing
+*/
+void f_pall(stack_t **head, unsigned int counter)
 {
-    stack_t *current = *stack;  /* Create a pointer to traverse the stack */
+	stack_t *h;
+	(void)counter;
 
-    (void)line_number; /* Unused parameter */
+	h = *head;
+	if (h == NULL)
+		return;
+	while (h)
+	{
+		printf("%d\n", h->n);
+		h = h->next;
+	}
+}
 
-    /* Loop through the stack and print its elements */
-    while (current != NULL)
-    {
-        printf("%d\n", current->n);
-        current = current->next; /* Move to the next element */
-    }
+/**
+* f_swap - function that swaps the top two elements of the stack
+* @head: head of stack
+* @counter: line count
+*
+* Return: nothing
+*/
+void f_swap(stack_t **head, unsigned int counter)
+{
+	stack_t *h;
+	int length = 0, temp;
+
+	h = *head;
+	while (h)
+	{
+		h = h->next;
+		length++;
+	}
+	if (length < 2)
+	{
+		fprintf(stderr, "L%d: can't swap, stack too short\n", counter);
+		fclose(bus.file);
+		free(bus.content);
+		free_stack(*head);
+		exit(EXIT_FAILURE);
+	}
+	h = *head;
+	temp = h->n;
+	h->n = h->next->n;
+	h->next->n = temp;
 }
